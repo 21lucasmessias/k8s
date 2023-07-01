@@ -1,0 +1,1 @@
+notepad (Get-PSReadLineOption | select -ExpandProperty HistorySavePath)

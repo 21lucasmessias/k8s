@@ -1,0 +1,13 @@
+kubectl cluster-info --context kind-full-cycle-cluster
+kubectl rollout history deployment goserver
+
+kubectl get pods
+kubectl get replicaset
+kubectl get deployments
+kubectl get services
+
+kubectl port-forward svc/goserver-service 8000:80
+
+kubectl apply -f .\deployment.yaml
+
+kubectl proxy --port=8000

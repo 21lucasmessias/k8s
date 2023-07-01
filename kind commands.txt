@@ -1,0 +1,2 @@
+kind create cluster --config=kind.yaml --name="full-cycle-cluster"
+kind get clusters
