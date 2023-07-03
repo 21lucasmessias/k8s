@@ -14,11 +14,22 @@ spec:
       labels:
         app: goserver
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: goserver
-          image: "21lucasmessias/go-hello:v4"
-          env:
-            - name: "NAME"
-              value: "Lucas"
-            - name: "AGE"
-              value: "26"
+          image: "21lucasmessias/go-hello:v3"
+          volumeMounts:
+            - mountPath: "/go/family/"
+              name: config
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-family
+            items: 
+            - key: members
+              path: myfamily.txt
